@@ -1966,6 +1966,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['customers'],
   data: function data() {
@@ -37635,21 +37643,31 @@ var render = function() {
               [
                 _c("h5", [_vm._v(_vm._s(customer.name))]),
                 _vm._v(" "),
-                _c("div", { staticClass: "float-right" }, [
-                  _c("span", { staticClass: "badge badge-primary" }, [
-                    _vm._v(_vm._s(customer.country))
+                _c("div", { staticClass: "d-flex float-right" }, [
+                  _c("div", [
+                    _c("span", { staticClass: "badge badge-primary mr-2" }, [
+                      _vm._v(_vm._s(customer.country))
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("span", { staticClass: "badge badge-light" }, [
-                    _vm._v(_vm._s(customer.state))
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "badge badge-dark" }, [
-                    _vm._v(_vm._s(customer.code))
-                  ])
+                  customer.state === "Not Valid"
+                    ? _c("div", [
+                        _c("span", { staticClass: "badge badge-danger" }, [
+                          _vm._v(_vm._s(customer.state))
+                        ])
+                      ])
+                    : _c("div", [
+                        _c("span", { staticClass: "badge badge-success" }, [
+                          _vm._v(_vm._s(customer.state))
+                        ])
+                      ])
                 ]),
                 _vm._v(" "),
-                _c("small", [_vm._v(_vm._s(customer.phone))])
+                _c("span", { staticClass: "badge badge-dark" }, [
+                  _vm._v(_vm._s(customer.code))
+                ]),
+                _vm._v(" "),
+                _c("small", [_vm._v(_vm._s(customer.number))])
               ]
             )
           }),
@@ -37671,27 +37689,27 @@ var render = function() {
                   [
                     _c("h5", [_vm._v(_vm._s(customer.name))]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "float-right" }, [
-                      _c("span", { staticClass: "badge badge-primary" }, [
-                        _vm._v(_vm._s(customer.country))
+                    _c("div", { staticClass: "d-flex float-right" }, [
+                      _c("div", [
+                        _c(
+                          "span",
+                          { staticClass: "badge badge-primary mr-2" },
+                          [_vm._v(_vm._s(customer.country))]
+                        )
                       ]),
                       _vm._v(" "),
-                      _c("span", { staticClass: "badge badge-light" }, [
-                        _vm._v(_vm._s(customer.state))
-                      ])
+                      customer.state === "Not Valid"
+                        ? _c("div", [
+                            _c("span", { staticClass: "badge badge-danger" }, [
+                              _vm._v(_vm._s(customer.state))
+                            ])
+                          ])
+                        : _c("div", [
+                            _c("span", { staticClass: "badge badge-success" }, [
+                              _vm._v(_vm._s(customer.state))
+                            ])
+                          ])
                     ]),
-                    _vm._v(" "),
-                    _vm.type === "A"
-                      ? _c("div", [
-                          _vm._v(
-                            "\n                        A\n                        "
-                          )
-                        ])
-                      : _c("div", [
-                          _vm._v(
-                            "\n                        Not A/B/C\n                    "
-                          )
-                        ]),
                     _vm._v(" "),
                     _c("span", { staticClass: "badge badge-dark" }, [
                       _vm._v(_vm._s(customer.code))

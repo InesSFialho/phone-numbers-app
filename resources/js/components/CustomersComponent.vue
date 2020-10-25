@@ -25,28 +25,36 @@
                 <ul class="list-group list-group-item-action active">
                     <li class="list-group-item border-0 list-group-item list-group-item-action" v-for="customer in filtered" :key="customer.id">
                         <h5>{{ customer.name }}</h5>
-                        <div class="float-right">
-                            <span class="badge badge-primary">{{ customer.country }}</span>
-                            <span class="badge badge-light">{{ customer.state }}</span>
-                            <span class="badge badge-dark">{{ customer.code }}</span>
+                        <div class="d-flex float-right">
+                            <div>
+                            <span class="badge badge-primary mr-2">{{ customer.country }}</span>
+                            </div>
+                            <div v-if="customer.state === 'Not Valid'">
+                                <span class='badge badge-danger'>{{ customer.state }}</span>
+                            </div>
+                            <div v-else>
+                                <span class='badge badge-success'>{{ customer.state }}</span>
+                            </div>
                         </div>
-                        <small>{{ customer.phone }}</small>
+                        <span class="badge badge-dark">{{ customer.code }}</span>
+                        <small>{{ customer.number }}</small>
                     </li>
                 </ul>
                 <ul class="list-group list-group-item-action active" v-if="seen">
                     <li class="list-group-item border-0 list-group-item list-group-item-action" v-for="customer in customers" :key="customer.id">
                         <h5>{{ customer.name }}</h5>
-                        <div class="float-right">
-                            <span class="badge badge-primary">{{ customer.country }}</span>
-                            <span class='badge badge-light'>{{ customer.state }}</span>
-                        </div>
-                        <div v-if="type === 'A'">
-                            A
+                        <div class="d-flex float-right">
+                            <div>
+                            <span class="badge badge-primary mr-2">{{ customer.country }}</span>
+                            </div>
+                            <div v-if="customer.state === 'Not Valid'">
+                                <span class='badge badge-danger'>{{ customer.state }}</span>
                             </div>
                             <div v-else>
-                            Not A/B/C
+                                <span class='badge badge-success'>{{ customer.state }}</span>
+                            </div>
                         </div>
-                            <span class="badge badge-dark">{{ customer.code }}</span>
+                        <span class="badge badge-dark">{{ customer.code }}</span>
                         <small>{{ customer.number }}</small>
                     </li>
                 </ul>
@@ -62,7 +70,8 @@
         data: () => {
             return {
                 filtered: null,
-                seen: true
+                seen: true,
+                
             }
         },
         methods: {
