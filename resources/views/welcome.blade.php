@@ -14,16 +14,7 @@
     </head>
     <body>
         <div id="app">
-            <ul>                
-            @forelse($customers as $customer)
-                <li class="d-flex">
-                    {{$customer->id}} - {{$customer->name}} - {{$customer->phone}}
-                </li>
-                @empty
-                <li colspan="4">{{ __('No customers!') }}</li>
-                @endforelse
-            </ul>
-            <example-component></example-component>
+            <customers-component :customers="{{$customers}}"></customers-component>
         </div>
         <script src="{{asset('js/app.js')}}"></script>
     </body>
