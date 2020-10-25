@@ -1922,13 +1922,70 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['customers'],
   data: function data() {
-    return {};
+    return {
+      filtered: null,
+      seen: true
+    };
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  methods: {
+    onChangeCountry: function onChangeCountry(event) {
+      this.filtered = this.customers.filter(function (el) {
+        return el.country == event.target.value;
+      });
+
+      if (event.target.value === 'Country') {
+        this.seen = true;
+      } else {
+        this.seen = false;
+      }
+    }
   }
 });
 
@@ -37526,22 +37583,127 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("div", { staticClass: "d-flex float-right" }, [
+          _c("div", { staticClass: "input-group mb-3" }, [
+            _c(
+              "select",
+              {
+                staticClass: "custom-select",
+                on: {
+                  change: function($event) {
+                    return _vm.onChangeCountry($event)
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { selected: "" } }, [_vm._v("Country")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Cameroon" } }, [
+                  _vm._v("Cameroon")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Ethiopia" } }, [
+                  _vm._v("Ethiopia")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Morocco" } }, [
+                  _vm._v("Morocco")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Mozambique" } }, [
+                  _vm._v("Mozambique")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Uganda" } }, [_vm._v("Uganda")])
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
         _c(
           "ul",
-          _vm._l(_vm.customers, function(customer) {
-            return _c("li", { key: customer.id }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(customer.id) +
-                  " - " +
-                  _vm._s(customer.name) +
-                  "\n                "
-              )
-            ])
+          { staticClass: "list-group list-group-item-action active" },
+          _vm._l(_vm.filtered, function(customer) {
+            return _c(
+              "li",
+              {
+                key: customer.id,
+                staticClass:
+                  "list-group-item border-0 list-group-item list-group-item-action"
+              },
+              [
+                _c("h5", [_vm._v(_vm._s(customer.name))]),
+                _vm._v(" "),
+                _c("div", { staticClass: "float-right" }, [
+                  _c("span", { staticClass: "badge badge-primary" }, [
+                    _vm._v(_vm._s(customer.country))
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "badge badge-light" }, [
+                    _vm._v(_vm._s(customer.state))
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "badge badge-dark" }, [
+                    _vm._v(_vm._s(customer.code))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("small", [_vm._v(_vm._s(customer.phone))])
+              ]
+            )
           }),
           0
-        )
+        ),
+        _vm._v(" "),
+        _vm.seen
+          ? _c(
+              "ul",
+              { staticClass: "list-group list-group-item-action active" },
+              _vm._l(_vm.customers, function(customer) {
+                return _c(
+                  "li",
+                  {
+                    key: customer.id,
+                    staticClass:
+                      "list-group-item border-0 list-group-item list-group-item-action"
+                  },
+                  [
+                    _c("h5", [_vm._v(_vm._s(customer.name))]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "float-right" }, [
+                      _c("span", { staticClass: "badge badge-primary" }, [
+                        _vm._v(_vm._s(customer.country))
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "badge badge-light" }, [
+                        _vm._v(_vm._s(customer.state))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.type === "A"
+                      ? _c("div", [
+                          _vm._v(
+                            "\n                        A\n                        "
+                          )
+                        ])
+                      : _c("div", [
+                          _vm._v(
+                            "\n                        Not A/B/C\n                    "
+                          )
+                        ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "badge badge-dark" }, [
+                      _vm._v(_vm._s(customer.code))
+                    ]),
+                    _vm._v(" "),
+                    _c("small", [_vm._v(_vm._s(customer.number))])
+                  ]
+                )
+              }),
+              0
+            )
+          : _vm._e()
       ])
     ])
   ])
